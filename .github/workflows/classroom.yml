@@ -13,16 +13,20 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Print Hello World
-      id: print-hello-world
-      uses: classroom-resources/autograding-python-grader@v1
+    - name: Ay Allahin adi
+      id: ay-allahin-adi
+      uses: classroom-resources/autograding-io-grader@v1
       with:
-        timeout: 10
-        max-score: 150
+        test-name: Ay Allahin adi
         setup-command: ''
+        command: python3 hello.py
+        input: ''
+        expected-output: Hello, world!
+        comparison-method: exact
+        timeout: 10
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        PRINT-HELLO-WORLD_RESULTS: "${{steps.print-hello-world.outputs.result}}"
+        AY-ALLAHIN-ADI_RESULTS: "${{steps.ay-allahin-adi.outputs.result}}"
       with:
-        runners: print-hello-world
+        runners: ay-allahin-adi
